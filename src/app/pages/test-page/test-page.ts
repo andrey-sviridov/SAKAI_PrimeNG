@@ -2,27 +2,23 @@ import { Component, inject, signal } from '@angular/core';
 import { ApiService } from '@/core/services/api.service';
 import { TableModule } from 'primeng/table';
 import { Button, ButtonDirective } from 'primeng/button';
-import { ProgressSpinner } from 'primeng/progressspinner';
 import { SimpleTable, TableColumn } from '@/components/simple-table/simple-table';
 import { TableTemplateDirective } from '@/core/directives/TableTemplateDirective';
 import { DatePipe, UpperCasePipe } from '@angular/common';
 // Если нужна русская локализация
 import 'moment/locale/ru';
 import moment from 'moment';
-import { Divider } from 'primeng/divider';
 
 @Component({
     selector: 'app-test-page',
     imports: [
         TableModule,
         Button,
-        ProgressSpinner,
         SimpleTable,
         ButtonDirective,
         TableTemplateDirective,
         DatePipe,
-        UpperCasePipe,
-        Divider
+        UpperCasePipe
     ],
     templateUrl: './test-page.html',
     standalone: true,
