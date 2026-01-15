@@ -1,6 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { Cattle } from '@/layout/component/custom-cattle-table/custom-cattle-table';
 
 @Injectable({ providedIn: 'root' })
 export class ApiService {
@@ -23,4 +24,10 @@ export class ApiService {
     delete<T>(path: string): Observable<T> {
         return this.http.delete<T>(`${this.baseUrl}${path}`);
     }
+
+    list(query: any): Observable<{ data: Cattle[]; totalRows: number }> {
+        // Здесь должен быть реальный HTTP запрос
+        return of({ data: [], totalRows: 0 });
+    }
+
 }

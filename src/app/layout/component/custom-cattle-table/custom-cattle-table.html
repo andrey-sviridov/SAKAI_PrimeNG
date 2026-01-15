@@ -1,0 +1,188 @@
+<div class="space-y-4">
+    @if (this.dynamicFilters) {
+        <!--        <app-dynamic-filters-->
+            <!--            [filtersInfo]="[]"-->
+            <!--            (confirm)="onApplyFilters($event)">-->
+            <!--        </app-dynamic-filters>-->
+    }
+
+    <div class="sshadow-sm rounded-lg border border-gray-200 overflow-hidden">
+
+        <div class="p-4 border-b border-gray-200">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+
+                <div class="w-full md:w-2/3 flex justify-start">
+                    <ng-content select="[header-action]"></ng-content>
+                    <p-button (click)="addAnimals()">Добавить СПИСОК</p-button>
+                </div>
+
+                <div class="w-full md:w-1/3 flex justify-end">
+                    <!--                    <app-quick-search-field-->
+                    <!--                        [value]="searchValue()"-->
+                    <!--                        (filterChanged)="onQuickSearch($event)">-->
+                    <!--                    </app-quick-search-field>-->
+                </div>
+            </div>
+        </div>
+
+        <div class="overflow-x-auto">
+            <table class="min-w-full divide-y divide-gray-200">
+                <thead class="bg-gray-50">
+                <tr>
+                    <th scope="col" class="px-6 py-3 text-left">
+                        <input type="checkbox"
+                               class="rounded border-gray-300 text-blue-600 focus:ring-blue-500 h-4 w-4"
+                               [checked]="this.allSelected"
+                               (change)="this.onToggleAll($event)">
+                    </th>
+
+                    @for (head of this.headers(); track head.key) {
+                        <th scope="col"
+                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
+                        > {{ head.label }}
+                        </th>
+                    }
+                </tr>
+                </thead>
+
+                <tbody class="divide-y divide-gray-200">
+                    @if (this.loading()) {
+                        <tr>
+                            <td [attr.colspan]="this.headers().length + 1" class="px-6 py-4 text-center">
+                                <span class="text-gray-500">Загрузка...</span>
+                            </td>
+                        </tr>
+                    } @else if (this.data.length === 0) {
+                        <tr>
+                            <td [attr.colspan]="this.headers().length + 1" class="px-6 py-4 text-center">
+                                Нет данных
+                            </td>
+                        </tr>
+                    } @else {
+                        @for (item of this.data; track item.id; let i = $index) {
+                            <tr class="hover:bg-gray-50 transition-colors">
+
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <input type="checkbox"
+                                           class="rounded border-gray-300 text-blue-600 focus:ring-blue-500 h-4 w-4"
+
+                                           (change)="this.toggleSelection(item)">
+                                </td>
+
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                    {{ this.rowNo(i) }}
+                                </td>
+
+                                @if (this.displayedColumns.showOwnerInfo) {
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex flex-col">
+                                          <span class="text-sm font-semibold text-gray-900 truncate max-w-[200px]">
+                                            {{ item.organizationName }}
+                                          </span>
+                                            <small class="text-xs text-gray-500">{{ item.organizationXin }}</small>
+                                        </div>
+                                    </td>
+                                }
+
+                                @if (this.displayedColumns.showIdentInfo) {
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="text-sm text-gray-900 font-medium">{{ item.nationalNumber }}</div>
+                                    </td>
+                                }
+
+                                @if (this.displayedColumns.showGender) {
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                                        {{ item.gender }}
+                                    </td>
+                                }
+
+                                @if (this.displayedColumns.showBirthDate) {
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex flex-col">
+                                          <span class="text-sm font-semibold text-gray-900">
+                                            {{ item.birthDate | date:'dd.MM.yyyy' }}
+                                          </span>
+                                        </div>
+                                    </td>
+                                }
+
+                                @if (this.displayedColumns.showBreed) {
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex flex-col">
+                                            <span
+                                                class="text-sm font-semibold text-gray-900">{{ item.breedName }}</span>
+                                            <small class="text-xs text-gray-500">{{ item.breedityId }}</small>
+                                        </div>
+                                    </td>
+                                }
+
+                                @if (this.displayedColumns.showProductionStatus) {
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span [class]="this.getStatusClass(item.productionStatus)">
+                                          {{ item.productionStatus }}
+                                        </span>
+                                    </td>
+                                }
+
+                                @if (this.displayedColumns.showPlemInfo) {
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex flex-col">
+                                          <span class="text-sm font-semibold text-gray-900">
+                                            {{ item.chamberNumber || 'Товарное' }}
+                                          </span>
+                                            <small
+                                                class="text-xs text-gray-500">{{ item.chamberNumber ? 'Племенное' : '' }}</small>
+                                        </div>
+                                    </td>
+                                }
+
+                                @if (this.displayedColumns.showHerdAndGroupInfo) {
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex flex-col">
+                                            <span
+                                                class="text-sm font-semibold text-gray-900">{{ item.herdAndGroupInfo.groupName }}</span>
+                                            <small
+                                                class="text-xs text-gray-500">{{ item.herdAndGroupInfo.herdName }}</small>
+                                        </div>
+                                    </td>
+                                }
+
+                                @if (this.displayedColumns.showFatherInfo) {
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex flex-col">
+                                            <span
+                                                class="text-sm font-semibold text-gray-900">{{ item.sireIdentNumber }}</span>
+                                        </div>
+                                    </td>
+                                }
+
+                                @if (this.displayedColumns.showMotherInfo) {
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex flex-col">
+                                            <span
+                                                class="text-sm font-semibold text-gray-900">{{ item.damIdentNumber }}</span>
+                                        </div>
+                                    </td>
+                                }
+
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <div class="border-t border-gray-200 px-4 py-3 flex items-center justify-between">
+            <!--            <app-pagination-->
+            <!--                [total]="this.totalRows()"-->
+            <!--                [options]="this.options()"-->
+            <!--                (optionsChange)="this.onPaginationChange($event)">-->
+            <!--            </app-pagination>-->
+        </div>
+
+        <div class="bg-gray-50 px-4 py-3 border-t border-gray-200" *ngIf="false">
+            <ng-content select="[footer-actions]"></ng-content>
+        </div>
+
+    </div>
+</div>

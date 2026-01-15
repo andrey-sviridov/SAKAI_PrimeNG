@@ -1,11 +1,11 @@
 import { Directive, Input, TemplateRef } from '@angular/core';
 
 @Directive({
-    standalone: true,
-    selector: '[appTableTemplate]'
+    selector: '[appTableTemplate]', // <--- Важно! Должно совпадать с тем, что в HTML
+    standalone: true
 })
 export class TableTemplateDirective {
-    @Input('') name: string = '';
+    @Input('name') name: string = ''; // Имя, по которому будем искать шаблон
 
     constructor(public template: TemplateRef<any>) {}
 }

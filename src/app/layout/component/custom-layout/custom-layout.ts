@@ -7,7 +7,6 @@ import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { AppFooter } from '@/layout/component/app.footer';
 import { NgClass } from '@angular/common';
 import { CustomSideBar } from '@/layout/component/custom-side-bar/custom-side-bar';
-import { ProgressSpinner } from 'primeng/progressspinner';
 import { LoadingService } from '@/core/services/loading.service';
 
 @Component({
@@ -15,11 +14,9 @@ import { LoadingService } from '@/core/services/loading.service';
     imports: [
         AppFooter,
         RouterOutlet,
-        AppSidebar,
         NgClass,
         AppTopbar,
-        CustomSideBar,
-        ProgressSpinner
+        CustomSideBar
     ],
     templateUrl: './custom-layout.html',
     standalone: true,

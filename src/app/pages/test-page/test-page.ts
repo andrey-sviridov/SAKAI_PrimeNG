@@ -4,7 +4,7 @@ import { TableModule } from 'primeng/table';
 import { Button, ButtonDirective } from 'primeng/button';
 import { SimpleTable, TableColumn } from '@/components/simple-table/simple-table';
 import { TableTemplateDirective } from '@/core/directives/TableTemplateDirective';
-import { DatePipe, UpperCasePipe } from '@angular/common';
+import { DatePipe } from '@angular/common';
 // Если нужна русская локализация
 import 'moment/locale/ru';
 import moment from 'moment';
@@ -17,8 +17,7 @@ import moment from 'moment';
         SimpleTable,
         ButtonDirective,
         TableTemplateDirective,
-        DatePipe,
-        UpperCasePipe
+        DatePipe
     ],
     templateUrl: './test-page.html',
     standalone: true,
@@ -27,17 +26,29 @@ import moment from 'moment';
 export class TestPage {
     private api = inject(ApiService);
     public posts: any = [];
-
+    displayedColumns  = {
+        showOwnerInfo: true,
+        showIdentInfo: true,
+        showBirthDate: true,
+        showBreed: true,
+        showPlemInfo: true,
+    }
     cols: TableColumn[] = [
         { columnName: 'Айдишник', propName: 'id', style: 'width: auto;' },
-        { columnName: 'Имя', propName: 'name', style: 'font-weight: bold;' },
-        { columnName: 'Возраст', propName: 'birthDate' } // Тут будет кастомный темплейт
+        { columnName: 'Животное', propName: 'nationalNumber', style: 'width: auto;' },
+        { columnName: 'Владелец', propName: 'organizationName', style: 'width: auto;' },
+        { columnName: 'Пол', propName: 'sex', style: 'width: auto;' },
+        { columnName: 'Дата рождения', propName: 'birthDate', style: 'width: auto;' },
+        { columnName: 'Порода', propName: 'breed', style: '' },
     ];
     users = [
-        { id: 1, name: 'Lol', birthDate: '1994-02-19T00:00:00' },
-        { id: 2, name: 'Kek', birthDate: '1994-04-29T00:00:00' }
+        { id: 1, nationalNumber: 'KZ123456780009', ownerXin: 'KZ123456780009', organizationName: 'ТОО "Агро-Инвест"', sex: false, breed: 'Абердин Ангус', birthDate: '2020-05-12T00:00:00' },
+        { id: 2, nationalNumber: 'KZ123456780002', ownerXin: 'KZ123456780009', organizationName: 'ТОО "Агро-Инвест"', sex: false, breed: 'Белоголовая', birthDate: '2023-02-20T00:00:00' },
+        { id: 3, nationalNumber: 'KZ123456780003', ownerXin: 'KZ123456780009', organizationName: 'АО "КазМяс"', sex: false, breed: 'Абердин Ангус', birthDate: '2019-06-30T00:00:00' },
+        { id: 4, nationalNumber: 'KZ123456780004', ownerXin: 'KZ123456780009', organizationName: 'ТОО "Молочный мир"', sex: false, breed: 'Голштинская', birthDate: '2018-09-15T00:00:00' },
+        { id: 5, nationalNumber: 'KZ123456780007', ownerXin: '950101000111', organizationName: 'ИП "Алиев"', sex: false, breed: 'Абердин Ангус', birthDate: '2023-08-01T00:00:00' }
     ];
-    loadData () { // Используйте = () =>
+    loadData () {
        this.api.get('/posts').subscribe(res => this.posts = res);
 
     }
