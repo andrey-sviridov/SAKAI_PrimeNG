@@ -2,10 +2,10 @@ import { Component, Renderer2, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavigationEnd, Router, RouterModule } from '@angular/router';
 import { filter, Subscription } from 'rxjs';
-import { AppTopbar } from './app.topbar';
-import { AppSidebar } from './app.sidebar';
-import { AppFooter } from './app.footer';
-import { LayoutService } from '../service/layout.service';
+import { AppTopbar } from '@/layout/app-topbar';
+import { AppSidebar } from '@/layout/app-sidebar';
+import { AppFooter } from '@/layout/app-footer';
+import { LayoutService } from '@/core/services/layout.service';
 
 @Component({
     selector: 'app-layout',

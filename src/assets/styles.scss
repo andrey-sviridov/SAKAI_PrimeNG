@@ -4,7 +4,9 @@
 @use 'primeicons/primeicons.css';
 @use './demo/demo.scss';
 
-
+html{
+    font-size: 16px !important;
+}
 /* Используем body для повышения приоритета над стилями темы */
 body .materio-table {
 

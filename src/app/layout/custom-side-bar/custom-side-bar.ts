@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MenuItem } from 'primeng/api';
-import { AppMenuitem } from '@/layout/component/app.menuitem';
+import { AppMenuitem } from '@/layout/app-menuitem';
 
 @Component({
     selector: 'app-custom-side-bar',

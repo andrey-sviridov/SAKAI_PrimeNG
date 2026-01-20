@@ -1,12 +1,12 @@
 import { Component, Renderer2, ViewChild } from '@angular/core';
 import { filter, Subscription } from 'rxjs';
-import { AppSidebar } from '@/layout/component/app.sidebar';
-import { AppTopbar } from '@/layout/component/app.topbar';
-import { LayoutService } from '@/layout/service/layout.service';
+import { AppSidebar } from '@/layout/app-sidebar';
+import { AppTopbar } from '@/layout/app-topbar';
+import { LayoutService } from '@/core/services/layout.service';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
-import { AppFooter } from '@/layout/component/app.footer';
+import { AppFooter } from '@/layout/app-footer';
 import { NgClass } from '@angular/common';
-import { CustomSideBar } from '@/layout/component/custom-side-bar/custom-side-bar';
+import { CustomSideBar } from '@/layout/custom-side-bar/custom-side-bar';
 import { LoadingService } from '@/core/services/loading.service';
 
 @Component({
