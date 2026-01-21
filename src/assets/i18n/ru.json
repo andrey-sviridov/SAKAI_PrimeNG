@@ -11,6 +11,9 @@
     "MALE": "Бык",
     "FEMALE": "Корова",
     "TOTAL_RECORDS": "Всего записей: {{count}}",
+    "DELETE_SELECTED": "Удалить выбранные",
+    "ADD_ANIMAL": "Добавить животное",
+    "REFRESH": "Обновить",
     "TABLE": {
       "ID": "ID",
       "ANIMAL": "Животное",

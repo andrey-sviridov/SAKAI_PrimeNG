@@ -9,21 +9,21 @@ import { CustomLayout } from '@/layout/custom-layout/custom-layout';
 export const appRoutes: Routes = [
     {
         path: '',
-        component: AppLayout,
+        component: CustomLayout,
         children: [
             { path: '', component: Dashboard },
             { path: 'uikit', loadChildren: () => import('@/pages/uikit/uikit.routes') },
             { path: 'documentation', component: Documentation },
-            { path: 'pages', loadChildren: () => import('@/pages/pages.routes') }
+            { path: 'pages', loadChildren: () => import('@/pages/pages.routes') },
+            { path: 'test', loadChildren: () => import('@/pages/test-page/test-page.routes') },
         ]
     },
     {
         path: 'custom',
-        component: CustomLayout,
+        component: AppLayout,
         children: [
-            { path: 'dashboard', component: Dashboard },
+            { path: '', component: Dashboard },
             { path: 'uikit', loadChildren: () => import('@/pages/uikit/uikit.routes') },
-            { path: 'test', loadChildren: () => import('@/pages/test-page/test-page.routes') },
         ]
     },
     { path: 'landing', component: Landing },

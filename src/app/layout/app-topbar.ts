@@ -113,7 +113,8 @@ import { Select } from 'primeng/select';
 export class AppTopbar implements OnInit {
     languages = [
         { code: 'en', name: 'English' },
-        { code: 'ru', name: 'Русский' }
+        { code: 'ru', name: 'Русский' },
+        { code: 'kz', name: 'Қазақша' }
     ];
     selectedLanguage: any;
     items!: MenuItem[];

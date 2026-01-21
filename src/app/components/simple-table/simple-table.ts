@@ -2,12 +2,14 @@ import { AfterContentInit, Component, ContentChildren, Input, QueryList, Templat
 import { TableTemplateDirective } from '@/core/directives/TableTemplateDirective';
 import { TableModule } from 'primeng/table';
 import { NgTemplateOutlet } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-simple-table',
     imports: [
         TableModule,
-        NgTemplateOutlet
+        NgTemplateOutlet,
+        TranslateModule
     ],
     templateUrl: './simple-table.html',
     standalone: true,

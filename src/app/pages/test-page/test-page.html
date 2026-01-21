@@ -1,8 +1,8 @@
 <div class="card p-6 shadow-lg rounded-xl dark:bg-zinc-900">
     <div class="flex items-center justify-between mb-6">
-        <h2 class="text-2xl font-bold text-zinc-800 dark:text-zinc-100">Тестовые данные</h2>
+        <h2 class="text-2xl font-bold text-zinc-800 dark:text-zinc-100">{{ 'TEST_PAGE.TITLE' | translate }}</h2>
         <p-button
-            label="Загрузить"
+            [label]="'TEST_PAGE.LOAD_BUTTON' | translate"
             icon="pi pi-download"
             (click)="loadData()" />
     </div>
@@ -25,7 +25,7 @@
             <p-button [label]="'TEST_PAGE.CREATE_BUTTON' | translate" icon="pi pi-plus"></p-button>
             <p-button
                 class="pl-3"
-                label="Обновить"
+                [label]="'TEST_PAGE.REFRESH' | translate"
                 icon="pi pi-refresh"
                 (click)="loadData()"
             />
@@ -54,7 +54,7 @@
         </ng-template>
 
         <div slot="bottom" class="text-right">
-            Всего записей: {{ users.length }}
+            {{ 'TEST_PAGE.TOTAL_RECORDS' | translate:{count: users.length} }}
         </div>
     </app-simple-table>
 </div>

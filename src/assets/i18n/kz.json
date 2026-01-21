@@ -1,0 +1,26 @@
+{
+  "APP": {
+    "TITLE": "SAKAI Қолданбасы",
+    "DESCRIPTION": "SAKAI қолданбасына қош келдіңіз"
+  },
+  "TEST_PAGE": {
+    "TITLE": "Сынақ деректері",
+    "LOAD_BUTTON": "Жүктеу",
+    "CREATE_BUTTON": "Жасау",
+    "UPDATE_BUTTON": "Жаңарту",
+    "MALE": "Бұқа",
+    "FEMALE": "Сиыр",
+    "TOTAL_RECORDS": "Барлық жазбалар: {{count}}",
+    "TABLE": {
+      "ID": "ID",
+      "ANIMAL": "Мал",
+      "OWNER": "Иесі",
+      "GENDER": "Жынысы",
+      "BIRTH_DATE": "Туған күні",
+      "BREED": "Тұқымы"
+    },
+    "DELETE_SELECTED": "Таңдалғандарды жою",
+    "ADD_ANIMAL": "Мал қосу",
+    "REFRESH": "Жаңарту"
+  }
+}

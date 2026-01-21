@@ -15,7 +15,7 @@
         <tr>
             @for (col of columns; track col.propName) {
                 <th [style]="col.style" [class]="col.styleClass">
-                    {{ col.columnName }}
+                    {{ col.columnName | translate }}
                 </th>
             }
         </tr>

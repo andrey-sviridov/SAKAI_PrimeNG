@@ -11,6 +11,9 @@
     "MALE": "Bull",
     "FEMALE": "Cow",
     "TOTAL_RECORDS": "Total records: {{count}}",
+    "DELETE_SELECTED": "Delete selected",
+    "ADD_ANIMAL": "Add animal",
+    "REFRESH": "Refresh",
     "TABLE": {
       "ID": "ID",
       "ANIMAL": "Animal",
