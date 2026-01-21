@@ -3,17 +3,17 @@ import { CommonModule } from '@angular/common';
 import { NavigationEnd, Router, RouterModule } from '@angular/router';
 import { filter, Subscription } from 'rxjs';
 import { AppTopbar } from '@/layout/app-topbar';
-import { AppSidebar } from '@/layout/app-sidebar';
+import { PreviewSidebar } from '@/layout/preview-sidebar';
 import { AppFooter } from '@/layout/app-footer';
 import { LayoutService } from '@/core/services/layout.service';
 
 @Component({
-    selector: 'app-layout',
+    selector: 'app-preview-layout',
     standalone: true,
-    imports: [CommonModule, AppTopbar, AppSidebar, RouterModule, AppFooter],
+    imports: [CommonModule, AppTopbar, PreviewSidebar, RouterModule, AppFooter],
     template: `<div class="layout-wrapper" [ngClass]="containerClass">
         <app-topbar></app-topbar>
-        <app-sidebar></app-sidebar>
+        <preview-sidebar></preview-sidebar>
         <div class="layout-main-container">
             <div class="layout-main">
                 <router-outlet></router-outlet>
@@ -23,12 +23,12 @@ import { LayoutService } from '@/core/services/layout.service';
         <div class="layout-mask animate-fadein"></div>
     </div> `
 })
-export class AppLayout {
+export class PreviewLayout {
     overlayMenuOpenSubscription: Subscription;
 
     menuOutsideClickListener: any;
 
-    @ViewChild(AppSidebar) appSidebar!: AppSidebar;
+    @ViewChild(PreviewSidebar) appSidebar!: PreviewSidebar;
 
     @ViewChild(AppTopbar) appTopBar!: AppTopbar;
 

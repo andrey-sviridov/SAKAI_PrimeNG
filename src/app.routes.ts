@@ -1,15 +1,15 @@
 import { Routes } from '@angular/router';
-import { AppLayout } from '@/layout/app-layout/app.layout';
+import { PreviewLayout } from '@/layout/app-preview-layout/preview.layout';
 import { Dashboard } from '@/pages/dashboard/dashboard';
 import { Documentation } from '@/pages/documentation/documentation';
 import { Landing } from '@/pages/landing/landing';
 import { Notfound } from '@/pages/notfound/notfound';
-import { CustomLayout } from '@/layout/custom-layout/custom-layout';
+import { AppLayout } from '@/layout/app-layout/app-layout';
 
 export const appRoutes: Routes = [
     {
         path: '',
-        component: CustomLayout,
+        component: AppLayout,
         children: [
             { path: '', component: Dashboard },
             { path: 'uikit', loadChildren: () => import('@/pages/uikit/uikit.routes') },
@@ -19,8 +19,8 @@ export const appRoutes: Routes = [
         ]
     },
     {
-        path: 'custom',
-        component: AppLayout,
+        path: 'preview',
+        component: PreviewLayout,
         children: [
             { path: '', component: Dashboard },
             { path: 'uikit', loadChildren: () => import('@/pages/uikit/uikit.routes') },

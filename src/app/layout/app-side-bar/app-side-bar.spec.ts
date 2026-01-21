@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CustomSideBar } from './custom-side-bar';
+import { AppSideBar } from './app-side-bar';
 import { provideRouter } from '@angular/router';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 describe('CustomSideBar', () => {
-  let component: CustomSideBar;
-  let fixture: ComponentFixture<CustomSideBar>;
+  let component: AppSideBar;
+  let fixture: ComponentFixture<AppSideBar>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CustomSideBar],
+      imports: [AppSideBar],
         providers: [
             provideAnimationsAsync(), // Это уберет ошибку @children
             provideRouter([])         // Это предотвратит ошибки с routerLink
@@ -18,7 +18,7 @@ describe('CustomSideBar', () => {
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(CustomSideBar);
+    fixture = TestBed.createComponent(AppSideBar);
     component = fixture.componentInstance; // Это доступ к переменным в .ts файле
     fixture.detectChanges(); // Это команда Angular: "отрисуй HTML прямо сейчас"
   });

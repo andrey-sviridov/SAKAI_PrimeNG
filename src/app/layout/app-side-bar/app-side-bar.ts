@@ -3,15 +3,15 @@ import { MenuItem } from 'primeng/api';
 import { AppMenuitem } from '@/layout/app-menuitem';
 
 @Component({
-    selector: 'app-custom-side-bar',
+    selector: 'app-side-bar',
     imports: [
         AppMenuitem
     ],
-    templateUrl: './custom-side-bar.html',
+    templateUrl: './app-side-bar.html',
     standalone: true,
-    styleUrl: './custom-side-bar.scss'
+    styleUrl: './app-side-bar.scss'
 })
-export class CustomSideBar {
+export class AppSideBar {
     model: MenuItem[] = [];
 
     ngOnInit() {

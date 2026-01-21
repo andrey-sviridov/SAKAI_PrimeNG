@@ -1,13 +1,11 @@
 import { Component, inject, signal } from '@angular/core';
 import { ApiService } from '@/core/services/api.service';
 import { TableModule } from 'primeng/table';
-import { Button, ButtonDirective } from 'primeng/button';
+import { Button } from 'primeng/button';
 import { SimpleTable, TableColumn } from '@/components/simple-table/simple-table';
 import { TableTemplateDirective } from '@/core/directives/TableTemplateDirective';
 import { DatePipe } from '@angular/common';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-// Если нужна русская локализация
-import 'moment/locale/ru';
 import moment from 'moment';
 
 @Component({
@@ -16,7 +14,6 @@ import moment from 'moment';
         TableModule,
         Button,
         SimpleTable,
-        ButtonDirective,
         TableTemplateDirective,
         DatePipe,
         TranslateModule
@@ -28,22 +25,13 @@ import moment from 'moment';
 export class TestPage {
     private api = inject(ApiService);
     public posts: any = [];
-    displayedColumns  = {
-        showOwnerInfo: true,
-        showIdentInfo: true,
-        showBirthDate: true,
-        showBreed: true,
-        showPlemInfo: true,
-    }
-    private translate = inject(TranslateService);
-
-    cols: TableColumn[] = [
+    public cols: TableColumn[] = [
         { columnName: 'TEST_PAGE.TABLE.ID', propName: 'id', style: 'width: auto;' },
         { columnName: 'TEST_PAGE.TABLE.ANIMAL', propName: 'nationalNumber', style: 'width: auto;' },
-        { columnName: 'TEST_PAGE.TABLE.OWNER', propName: 'organizationName', style: 'width: auto;' },
         { columnName: 'TEST_PAGE.TABLE.GENDER', propName: 'sex', style: 'width: auto;' },
+        { columnName: 'TEST_PAGE.TABLE.OWNER', propName: 'organizationName', style: 'width: auto;' },
         { columnName: 'TEST_PAGE.TABLE.BIRTH_DATE', propName: 'birthDate', style: 'width: auto;' },
-        { columnName: 'TEST_PAGE.TABLE.BREED', propName: 'breed', style: '' },
+        { columnName: 'TEST_PAGE.TABLE.BREED', propName: 'breed', style: '' }
     ];
     users = [
         { id: 1, nationalNumber: 'KZ123456780009', ownerXin: 'KZ123456780009', organizationName: 'ТОО "Агро-Инвест"', sex: false, breed: 'Абердин Ангус', birthDate: '2020-05-12T00:00:00' },

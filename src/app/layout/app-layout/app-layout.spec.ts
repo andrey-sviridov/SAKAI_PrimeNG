@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CustomLayout } from './custom-layout';
+import { AppLayout } from './app-layout';
 import { provideRouter } from '@angular/router';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 describe('CustomLayout', () => {
-  let component: CustomLayout;
-  let fixture: ComponentFixture<CustomLayout>;
+  let component: AppLayout;
+  let fixture: ComponentFixture<AppLayout>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CustomLayout],
+      imports: [AppLayout],
         providers: [
             provideRouter([]),
             provideAnimationsAsync()
@@ -18,7 +18,7 @@ describe('CustomLayout', () => {
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(CustomLayout);
+    fixture = TestBed.createComponent(AppLayout);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

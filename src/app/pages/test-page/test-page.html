@@ -6,20 +6,6 @@
             icon="pi pi-download"
             (click)="loadData()" />
     </div>
-<!--    <app-cattle-table-->
-<!--        [rowsPerPage]="20"-->
-<!--        [dynamicFilters]="true"-->
-<!--        [displayedColumns]="displayedColumns">-->
-
-<!--        <button header-action class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">-->
-<!--            Добавить животное-->
-<!--        </button>-->
-
-<!--        <div footer-actions>-->
-<!--            <button class="text-red-600">Удалить выбранные</button>-->
-<!--        </div>-->
-
-<!--    </app-cattle-table>-->
     <app-simple-table [data]="users" [columns]="cols">
         <div slot="top">
             <p-button [label]="'TEST_PAGE.CREATE_BUTTON' | translate" icon="pi pi-plus"></p-button>

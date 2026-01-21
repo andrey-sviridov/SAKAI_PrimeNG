@@ -1,33 +1,32 @@
 import { Component, Renderer2, ViewChild } from '@angular/core';
 import { filter, Subscription } from 'rxjs';
-import { AppSidebar } from '@/layout/app-sidebar';
 import { AppTopbar } from '@/layout/app-topbar';
 import { LayoutService } from '@/core/services/layout.service';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { AppFooter } from '@/layout/app-footer';
 import { NgClass } from '@angular/common';
-import { CustomSideBar } from '@/layout/custom-side-bar/custom-side-bar';
+import { AppSideBar } from '@/layout/app-side-bar/app-side-bar';
 import { LoadingService } from '@/core/services/loading.service';
 
 @Component({
-    selector: 'app-custom-layout',
+    selector: 'app-app-layout',
     imports: [
         AppFooter,
         RouterOutlet,
         NgClass,
         AppTopbar,
-        CustomSideBar
+        AppSideBar
     ],
-    templateUrl: './custom-layout.html',
+    templateUrl: './app-layout.html',
     standalone: true,
-    styleUrl: './custom-layout.scss'
+    styleUrl: './app-layout.scss'
 })
-export class CustomLayout {
+export class AppLayout {
     overlayMenuOpenSubscription: Subscription;
 
     menuOutsideClickListener: any;
 
-    @ViewChild(AppSidebar) appSidebar!: AppSidebar;
+    @ViewChild(AppSideBar) appSidebar!: AppSideBar;
 
     @ViewChild(AppTopbar) appTopBar!: AppTopbar;
 
