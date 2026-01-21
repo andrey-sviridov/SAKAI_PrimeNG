@@ -1,15 +1,34 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { StyleClassModule } from 'primeng/styleclass';
 import { AppConfigurator } from './app.configurator';
 import { LayoutService } from '@/core/services/layout.service';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { Select } from 'primeng/select';
+
 
 @Component({
     selector: 'app-topbar',
     standalone: true,
-    imports: [RouterModule, CommonModule, StyleClassModule, AppConfigurator],
+    imports: [RouterModule, CommonModule, FormsModule, StyleClassModule, AppConfigurator, TranslateModule, Select],
+    styles: [`
+        .language-switcher {
+            margin-right: 1rem;
+        }
+        .language-switcher ::ng-deep .p-dropdown {
+            border: none;
+            background: transparent;
+        }
+        .language-switcher ::ng-deep .p-dropdown .p-dropdown-trigger {
+            color: var(--text-color);
+        }
+        .language-switcher ::ng-deep .p-dropdown:not(.p-disabled).p-focus {
+            box-shadow: none;
+        }
+    `],
     template: ` <div class="layout-topbar">
         <div class="layout-topbar-logo-container">
             <button class="layout-menu-button layout-topbar-action" (click)="layoutService.onMenuToggle()">
@@ -39,6 +58,16 @@ import { LayoutService } from '@/core/services/layout.service';
 
         <div class="layout-topbar-actions">
             <div class="layout-config-menu">
+
+                <div class="language-switcher">
+                    <p-select
+                        [options]="languages"
+                        [(ngModel)]="selectedLanguage"
+                        (onChange)="onLanguageChange($event)"
+                        optionLabel="name"
+                        [style]="{'min-width': '120px'}">
+                    </p-select>
+                </div>
                 <button type="button" class="layout-topbar-action" (click)="toggleDarkMode()">
                     <i [ngClass]="{ 'pi ': true, 'pi-moon': layoutService.isDarkTheme(), 'pi-sun': !layoutService.isDarkTheme() }"></i>
                 </button>
@@ -81,10 +110,30 @@ import { LayoutService } from '@/core/services/layout.service';
         </div>
     </div>`
 })
-export class AppTopbar {
+export class AppTopbar implements OnInit {
+    languages = [
+        { code: 'en', name: 'English' },
+        { code: 'ru', name: 'Русский' }
+    ];
+    selectedLanguage: any;
     items!: MenuItem[];
 
-    constructor(public layoutService: LayoutService) {}
+    constructor(
+        public layoutService: LayoutService,
+        private translate: TranslateService
+    ) {}
+
+    ngOnInit() {
+        // Устанавливаем текущий язык
+        const currentLang = this.translate.currentLang || this.translate.defaultLang || 'en';
+        this.selectedLanguage = this.languages.find(lang => lang.code === currentLang) || this.languages[0];
+    }
+
+    onLanguageChange(event: any) {
+        if (event.value) {
+            this.translate.use(event.value.code);
+        }
+    }
 
     toggleDarkMode() {
         this.layoutService.layoutConfig.update((state) => ({ ...state, darkTheme: !state.darkTheme }));

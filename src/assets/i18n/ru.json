@@ -1,0 +1,23 @@
+{
+  "APP": {
+    "TITLE": "SAKAI Приложение",
+    "DESCRIPTION": "Добро пожаловать в SAKAI"
+  },
+  "TEST_PAGE": {
+    "TITLE": "Тестовые данные",
+    "LOAD_BUTTON": "Загрузить",
+    "CREATE_BUTTON": "Создать",
+    "UPDATE_BUTTON": "Обновить",
+    "MALE": "Бык",
+    "FEMALE": "Корова",
+    "TOTAL_RECORDS": "Всего записей: {{count}}",
+    "TABLE": {
+      "ID": "ID",
+      "ANIMAL": "Животное",
+      "OWNER": "Владелец",
+      "GENDER": "Пол",
+      "BIRTH_DATE": "Дата рождения",
+      "BREED": "Порода"
+    }
+  }
+}

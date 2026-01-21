@@ -5,6 +5,7 @@ import { Button, ButtonDirective } from 'primeng/button';
 import { SimpleTable, TableColumn } from '@/components/simple-table/simple-table';
 import { TableTemplateDirective } from '@/core/directives/TableTemplateDirective';
 import { DatePipe } from '@angular/common';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 // Если нужна русская локализация
 import 'moment/locale/ru';
 import moment from 'moment';
@@ -17,7 +18,8 @@ import moment from 'moment';
         SimpleTable,
         ButtonDirective,
         TableTemplateDirective,
-        DatePipe
+        DatePipe,
+        TranslateModule
     ],
     templateUrl: './test-page.html',
     standalone: true,
@@ -33,13 +35,15 @@ export class TestPage {
         showBreed: true,
         showPlemInfo: true,
     }
+    private translate = inject(TranslateService);
+
     cols: TableColumn[] = [
-        { columnName: 'Айдишник', propName: 'id', style: 'width: auto;' },
-        { columnName: 'Животное', propName: 'nationalNumber', style: 'width: auto;' },
-        { columnName: 'Владелец', propName: 'organizationName', style: 'width: auto;' },
-        { columnName: 'Пол', propName: 'sex', style: 'width: auto;' },
-        { columnName: 'Дата рождения', propName: 'birthDate', style: 'width: auto;' },
-        { columnName: 'Порода', propName: 'breed', style: '' },
+        { columnName: 'TEST_PAGE.TABLE.ID', propName: 'id', style: 'width: auto;' },
+        { columnName: 'TEST_PAGE.TABLE.ANIMAL', propName: 'nationalNumber', style: 'width: auto;' },
+        { columnName: 'TEST_PAGE.TABLE.OWNER', propName: 'organizationName', style: 'width: auto;' },
+        { columnName: 'TEST_PAGE.TABLE.GENDER', propName: 'sex', style: 'width: auto;' },
+        { columnName: 'TEST_PAGE.TABLE.BIRTH_DATE', propName: 'birthDate', style: 'width: auto;' },
+        { columnName: 'TEST_PAGE.TABLE.BREED', propName: 'breed', style: '' },
     ];
     users = [
         { id: 1, nationalNumber: 'KZ123456780009', ownerXin: 'KZ123456780009', organizationName: 'ТОО "Агро-Инвест"', sex: false, breed: 'Абердин Ангус', birthDate: '2020-05-12T00:00:00' },

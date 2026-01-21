@@ -22,7 +22,7 @@
 <!--    </app-cattle-table>-->
     <app-simple-table [data]="users" [columns]="cols">
         <div slot="top">
-            <button pButton label="Создать" icon="pi pi-plus"></button>
+            <p-button [label]="'TEST_PAGE.CREATE_BUTTON' | translate" icon="pi pi-plus"></p-button>
             <p-button
                 class="pl-3"
                 label="Обновить"
@@ -46,7 +46,7 @@
         </ng-template>
 
         <ng-template appTableTemplate name="sex" let-row>
-            {{ row.sex ? 'Бык' : 'Корова' }}
+            {{ row.sex ? ('TEST_PAGE.MALE' | translate) : ('TEST_PAGE.FEMALE' | translate) }}
         </ng-template>
 
         <ng-template appTableTemplate name="birthDate" let-row>

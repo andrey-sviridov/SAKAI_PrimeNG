@@ -1,0 +1,23 @@
+{
+  "APP": {
+    "TITLE": "SAKAI Application",
+    "DESCRIPTION": "Welcome to SAKAI"
+  },
+  "TEST_PAGE": {
+    "TITLE": "Test Data",
+    "LOAD_BUTTON": "Load",
+    "CREATE_BUTTON": "Create",
+    "UPDATE_BUTTON": "Refresh",
+    "MALE": "Bull",
+    "FEMALE": "Cow",
+    "TOTAL_RECORDS": "Total records: {{count}}",
+    "TABLE": {
+      "ID": "ID",
+      "ANIMAL": "Animal",
+      "OWNER": "Owner",
+      "GENDER": "Gender",
+      "BIRTH_DATE": "Birth Date",
+      "BREED": "Breed"
+    }
+  }
+}
