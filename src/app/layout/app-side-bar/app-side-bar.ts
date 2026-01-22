@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { AppMenuitem } from '@/layout/app-menuitem';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-side-bar',
@@ -11,84 +12,92 @@ import { AppMenuitem } from '@/layout/app-menuitem';
     standalone: true,
     styleUrl: './app-side-bar.scss'
 })
-export class AppSideBar {
+export class AppSideBar implements OnInit {
+  constructor(private translate: TranslateService) {}
     model: MenuItem[] = [];
 
     ngOnInit() {
         this.model = [
             {
-                label: 'Home',
-                items: [{ label: 'Dashboard', icon: 'pi pi-fw pi-home', routerLink: ['/custom/dashboard'] }]
+                label: 'SIDEBAR.HOME',
+                items: [{ label: this.translate.instant('SIDEBAR.HOME'), icon: 'pi pi-fw pi-home', routerLink: ['/'] }]
             },
             {
-                label: 'UI Components',
+                label: this.translate.instant('SIDEBAR.HOME'),
+                items: [{ label: this.translate.instant('SIDEBAR.DASHBOARD'), icon: 'pi pi-fw pi-home', routerLink: ['/dashboard'] }]
+            },
+            {
+                label: this.translate.instant('SIDEBAR.TEST_PAGE'),
+                items: [{ label: this.translate.instant('SIDEBAR.TEST_PAGE'), icon: 'pi pi-fw pi-id-card', routerLink: ['/test'] }]
+            },
+            {
+                label: this.translate.instant('SIDEBAR.UI_COMPONENTS'),
                 items: [
-                    { label: 'Form Layout', icon: 'pi pi-fw pi-id-card', routerLink: ['/custom/uikit/formlayout'] },
-
+                    { label: this.translate.instant('SIDEBAR.FORM_LAYOUT'), icon: 'pi pi-fw pi-id-card', routerLink: ['/custom/uikit/formlayout'] },
                 ]
             },
             {
-                label: 'Pages',
+                label: this.translate.instant('SIDEBAR.PAGES'),
                 icon: 'pi pi-fw pi-briefcase',
                 routerLink: ['/pages'],
                 items: [
                     {
-                        label: 'Landing',
+                        label: this.translate.instant('SIDEBAR.LANDING'),
                         icon: 'pi pi-fw pi-globe',
                         routerLink: ['/landing']
                     },
                     {
-                        label: 'Auth',
+                        label: this.translate.instant('SIDEBAR.AUTH'),
                         icon: 'pi pi-fw pi-user',
                         items: [
                             {
-                                label: 'Login',
+                                label: this.translate.instant('SIDEBAR.LOGIN'),
                                 icon: 'pi pi-fw pi-sign-in',
                                 routerLink: ['/auth/login']
                             },
                             {
-                                label: 'Error',
+                                label: this.translate.instant('SIDEBAR.ERROR'),
                                 icon: 'pi pi-fw pi-times-circle',
                                 routerLink: ['/auth/error']
                             },
                             {
-                                label: 'Access Denied',
+                                label: this.translate.instant('SIDEBAR.ACCESS_DENIED'),
                                 icon: 'pi pi-fw pi-lock',
                                 routerLink: ['/auth/access']
                             }
                         ]
                     },
                     {
-                        label: 'Crud',
+                        label: this.translate.instant('SIDEBAR.CRUD'),
                         icon: 'pi pi-fw pi-pencil',
                         routerLink: ['/pages/crud']
                     },
                     {
-                        label: 'Not Found',
+                        label: this.translate.instant('SIDEBAR.NOT_FOUND'),
                         icon: 'pi pi-fw pi-exclamation-circle',
                         routerLink: ['/pages/notfound']
                     },
                     {
-                        label: 'Empty',
+                        label: this.translate.instant('SIDEBAR.EMPTY'),
                         icon: 'pi pi-fw pi-circle-off',
                         routerLink: ['/pages/empty']
                     }
                 ]
             },
             {
-                label: 'Hierarchy',
+                label: this.translate.instant('SIDEBAR.HIERARCHY'),
                 items: [
                     {
-                        label: 'Submenu 1',
+                        label: this.translate.instant('SIDEBAR.SUBMENU_1'),
                         icon: 'pi pi-fw pi-bookmark',
                         items: [
                             {
-                                label: 'Submenu 1.1',
+                                label: this.translate.instant('SIDEBAR.SUBMENU_1_1'),
                                 icon: 'pi pi-fw pi-bookmark',
                                 items: [
-                                    { label: 'Submenu 1.1.1', icon: 'pi pi-fw pi-bookmark' },
-                                    { label: 'Submenu 1.1.2', icon: 'pi pi-fw pi-bookmark' },
-                                    { label: 'Submenu 1.1.3', icon: 'pi pi-fw pi-bookmark' }
+                                    { label: this.translate.instant('SIDEBAR.SUBMENU_1_1_1'), icon: 'pi pi-fw pi-bookmark' },
+                                    { label: this.translate.instant('SIDEBAR.SUBMENU_1_1_2'), icon: 'pi pi-fw pi-bookmark' },
+                                    { label: this.translate.instant('SIDEBAR.SUBMENU_1_1_3'), icon: 'pi pi-fw pi-bookmark' }
                                 ]
                             },
                             {

@@ -5,7 +5,7 @@ import { Button } from 'primeng/button';
 import { SimpleTable, TableColumn } from '@/components/simple-table/simple-table';
 import { TableTemplateDirective } from '@/core/directives/TableTemplateDirective';
 import { DatePipe } from '@angular/common';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { TranslateModule } from '@ngx-translate/core';
 import moment from 'moment';
 
 @Component({
