@@ -1,4 +1,4 @@
-<div class="card p-6 shadow-lg rounded-xl dark:bg-zinc-900">
+<div class="card shadow-md rounded-xl dark:bg-zinc-900">
     <div class="flex items-center justify-between mb-6">
         <h2 class="text-2xl font-bold text-zinc-800 dark:text-zinc-100">{{ 'TEST_PAGE.TITLE' | translate }}</h2>
         <p-button
@@ -6,41 +6,69 @@
             icon="pi pi-download"
             (click)="loadData()" />
     </div>
-    <app-simple-table [data]="users" [columns]="cols">
-        <div slot="top">
-            <p-button [label]="'TEST_PAGE.CREATE_BUTTON' | translate" icon="pi pi-plus"></p-button>
-            <p-button
-                class="pl-3"
-                [label]="'TEST_PAGE.REFRESH' | translate"
-                icon="pi pi-refresh"
-                (click)="loadData()"
-            />
-        </div>
 
-        <ng-template appTableTemplate name="organizationName" let-row>
-            <div class="flex flex-col">
+    <app-data-table [data]="users" [columns]="cols">
 
-            <span class="font-bold text-gray-600 pb-1">
-                {{ row.organizationName }}
-            </span>
-
-                <small class="text-xs text-gray-500">
-                    {{ row.ownerXin }}
-                </small>
-
+        <ng-template columnName="organizationName" let-item>
+            <div class="grid grid-column gap-1">
+                    <span class="font-bold">
+                        {{ item.organizationName }}
+                    </span>
+                <span class="text-secondary" style="font-size: 0.85rem; color: gray;">
+                        {{ item.ownerXin }}
+                    </span>
             </div>
         </ng-template>
 
-        <ng-template appTableTemplate name="sex" let-row>
-            {{ row.sex ? ('TEST_PAGE.MALE' | translate) : ('TEST_PAGE.FEMALE' | translate) }}
+        <ng-template columnName="birthDate" let-item>
+            <div class="grid grid-column gap-1">
+                <span>{{ item.birthDate | date: 'dd.MM.yyyy' }}</span>
+                <span>{{ 'TEST_PAGE.MONTHS_AGO' | translate: { count: moment(moment()).diff(moment(item.birthDate), 'months') } }}</span>
+            </div>
         </ng-template>
 
-        <ng-template appTableTemplate name="birthDate" let-row>
-            {{ row.birthDate | date: 'dd.MM.yyyy' }}
+        <ng-template columnName="sex" let-item>
+            <i [class]="item.sex ? 'pi pi-mars text-blue-500' : 'pi pi-venus text-pink-500'" class="pr-2"></i>
+            <span>{{ item.sex ? ("TEST_PAGE.MALE" | translate) : ("TEST_PAGE.FEMALE" | translate) }}</span>
         </ng-template>
 
-        <div slot="bottom" class="text-right">
-            {{ 'TEST_PAGE.TOTAL_RECORDS' | translate:{count: users.length} }}
-        </div>
-    </app-simple-table>
+    </app-data-table>
+
+<!--    <app-simple-table [data]="users" [columns]="cols">-->
+<!--        <div slot="top">-->
+<!--            <p-button [label]="'TEST_PAGE.CREATE_BUTTON' | translate" icon="pi pi-plus"></p-button>-->
+<!--            <p-button-->
+<!--                class="pl-3"-->
+<!--                [label]="'TEST_PAGE.REFRESH' | translate"-->
+<!--                icon="pi pi-refresh"-->
+<!--                (click)="loadData()"-->
+<!--            />-->
+<!--        </div>-->
+
+<!--        <ng-template appTableTemplate name="organizationName" let-row>-->
+<!--            <div class="flex flex-col">-->
+
+<!--            <span class="font-bold text-gray-600 pb-1">-->
+<!--                {{ row.organizationName }}-->
+<!--            </span>-->
+
+<!--                <small class="text-xs text-gray-500">-->
+<!--                    {{ row.ownerXin }}-->
+<!--                </small>-->
+
+<!--            </div>-->
+<!--        </ng-template>-->
+
+<!--        <ng-template appTableTemplate name="sex" let-row>-->
+<!--            {{ row.sex ? ('TEST_PAGE.MALE' | translate) : ('TEST_PAGE.FEMALE' | translate) }}-->
+<!--        </ng-template>-->
+
+<!--        <ng-template appTableTemplate name="birthDate" let-row>-->
+<!--            {{ row.birthDate | date: 'dd.MM.yyyy' }}-->
+<!--        </ng-template>-->
+
+<!--        <div slot="bottom" class="text-right">-->
+<!--            {{ 'TEST_PAGE.TOTAL_RECORDS' | translate:{count: users.length} }}-->
+<!--        </div>-->
+<!--    </app-simple-table>-->
 </div>

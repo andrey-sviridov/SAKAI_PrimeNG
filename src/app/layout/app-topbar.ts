@@ -29,7 +29,7 @@ import { Select } from 'primeng/select';
             box-shadow: none;
         }
     `],
-    template: ` <div class="layout-topbar">
+    template: ` <div class="layout-topbar shadow-md">
         <div class="layout-topbar-logo-container">
             <button class="layout-menu-button layout-topbar-action" (click)="layoutService.onMenuToggle()">
                 <i class="pi pi-bars"></i>

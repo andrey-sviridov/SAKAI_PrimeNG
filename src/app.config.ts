@@ -7,9 +7,10 @@ import { providePrimeNG } from 'primeng/config';
 import { appRoutes } from './app.routes';
 import { apiInterceptor } from '@/core/interceptors/api.interceptor';
 import { MessageService } from 'primeng/api';
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateModule, TranslateLoader, TranslateCompiler } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient } from '@angular/common/http';
+import { TranslateMessageFormatCompiler } from 'ngx-translate-messageformat-compiler';
 
 // Factory for loading translations
 export function HttpLoaderFactory(http: HttpClient) {
@@ -31,6 +32,12 @@ export const appConfig: ApplicationConfig = {
                     provide: TranslateLoader,
                     useFactory: HttpLoaderFactory,
                     deps: [HttpClient]
+                },
+                compiler: {
+                    provide: TranslateCompiler,
+                    // ВАЖНО: Используем useFactory вместо useClass
+                    useFactory: () => new TranslateMessageFormatCompiler(),
+                    deps: []
                 },
                 defaultLanguage: 'en'
             })

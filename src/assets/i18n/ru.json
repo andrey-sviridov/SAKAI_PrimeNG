@@ -36,6 +36,7 @@
     "DELETE_SELECTED": "Удалить выбранные",
     "ADD_ANIMAL": "Добавить животное",
     "REFRESH": "Обновить",
+    "MONTHS_AGO": "{count, plural, =0{менее месяца} one{# месяц} few{# месяца} many{# месяцев} other{# месяца}}",
     "TABLE": {
       "ID": "ID",
       "ANIMAL": "Животное",

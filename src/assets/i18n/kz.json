@@ -43,6 +43,7 @@
     },
     "DELETE_SELECTED": "Таңдалғандарды жою",
     "ADD_ANIMAL": "Мал қосу",
-    "REFRESH": "Жаңарту"
+    "REFRESH": "Жаңарту",
+    "MONTHS_AGO": "{count, plural, =0{бір айдан аз} one{# ай} other{# ай}} бұрын"
   }
 }

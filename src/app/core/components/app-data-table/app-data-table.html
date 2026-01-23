@@ -1,0 +1,48 @@
+<div class="card p-0" [class.dark-theme]="isDarkMode">
+    <p-table
+        [value]="data"
+        [rows]="rows"
+        [scrollable]="scrollable"
+        [scrollHeight]="scrollable ? scrollHeight : 'auto'"
+        [tableStyle]="{'min-width': '50rem'}"
+    >
+
+        <ng-template pTemplate="header">
+            <tr>
+                <th *ngFor="let col of columns" [style.width]="col.width">
+                    {{ col.header | translate }}
+                </th>
+            </tr>
+        </ng-template>
+
+        <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
+            <tr>
+                <td *ngFor="let col of columns">
+
+                    <span [ngSwitch]="col.type">
+                        <span *ngSwitchCase="'date'">
+                            <span>{{ rowData[col.field] | date:(col.format || 'dd.MM.yyyy') }}</span>
+                        </span>
+                        <span *ngSwitchDefault>
+                            <ng-container *ngIf="getBodyTemplate(col.field)">
+                                <ng-container *ngTemplateOutlet="getBodyTemplate(col.field); context: { $implicit: rowData }">
+                                </ng-container>
+                            </ng-container>
+                            <ng-container *ngIf="!getBodyTemplate(col.field)">
+                                {{ rowData[col.field] | translate }}
+                            </ng-container>
+                        </span>
+                    </span>
+                </td>
+            </tr>
+        </ng-template>
+
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td [attr.colspan]="columns.length" class="text-center">
+                    {{ 'COMMON.NO_DATA' | translate }}
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

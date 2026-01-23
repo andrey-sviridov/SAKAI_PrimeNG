@@ -38,8 +38,8 @@ export class SimpleTable implements AfterContentInit {
     }
 }
 export interface TableColumn {
-    columnName: string; // Заголовок
-    propName: string;   // Ключ в объекте данных
+    header: string; // Заголовок
+    field: string;   // Ключ в объекте данных
     style?: string;     // CSS стили (ширина, цвет)
     styleClass?: string; // CSS классы
 }

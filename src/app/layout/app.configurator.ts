@@ -123,6 +123,23 @@ export class AppConfigurator {
 
     surfaces: SurfacesType[] = [
         {
+            name: 'materio',
+            palette: {
+                0:   '#ffffff',
+                50:  '#f6f5f8',
+                100: '#eceaf2',
+                200: '#d6d2e4',
+                300: '#b9b1d0',
+                400: '#9a8fb8',
+                500: '#7b6ea0',
+                600: '#5f5486',
+                700: '#4a416b',
+                800: '#3a3358',
+                900: '#302b49'
+            }
+
+        },
+        {
             name: 'slate',
             palette: {
                 0: '#ffffff',

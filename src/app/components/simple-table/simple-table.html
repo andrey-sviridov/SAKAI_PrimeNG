@@ -13,9 +13,9 @@
 >
     <ng-template pTemplate="header">
         <tr>
-            @for (col of columns; track col.propName) {
+            @for (col of columns; track col.field) {
                 <th [style]="col.style" [class]="col.styleClass">
-                    {{ col.columnName | translate }}
+                    {{ col.field | translate }}
                 </th>
             }
         </tr>
@@ -23,13 +23,13 @@
 
     <ng-template pTemplate="body" let-rowData>
         <tr>
-            @for (col of columns; track col.propName) {
+            @for (col of columns; track col.field) {
                 <td [style]="col.style" [class]="col.styleClass">
 
-                    @if (templateMap[col.propName]; as customTemplate) {
+                    @if (templateMap[col.field]; as customTemplate) {
                         <ng-container *ngTemplateOutlet="customTemplate; context: { $implicit: rowData }" />
                     } @else {
-                        {{ rowData[col.propName] }}
+                        {{ rowData[col.field] }}
                     }
 
                 </td>

@@ -36,6 +36,7 @@
     "DELETE_SELECTED": "Delete selected",
     "ADD_ANIMAL": "Add animal",
     "REFRESH": "Refresh",
+      "MONTHS_AGO": "{count, plural, =0{less than a month} one{# month} other{# months} other{# months}}",
     "TABLE": {
       "ID": "ID",
       "ANIMAL": "Animal",
