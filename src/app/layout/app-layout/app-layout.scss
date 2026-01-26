@@ -1,0 +1,17 @@
+/* Класс, который мы вешали на div-обертку */
+.layout-content-animation {
+    display: block;
+    position: relative; /* Обязательно для позиционирования детей */
+    width: 100%;
+    overflow: hidden; /* Скрываем скролл во время выезда */
+
+    /* Добавьте минимальную высоту, чтобы футер не "прыгал" вверх,
+       когда контент становится absolute во время анимации */
+    min-height: calc(100vh - 10rem);
+}
+
+/* Опционально: фикс для компонентов, чтобы они занимали всю ширину при absolute */
+.layout-content-animation > * {
+    display: block;
+    width: 100%;
+}

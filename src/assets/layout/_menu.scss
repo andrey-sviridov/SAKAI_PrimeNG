@@ -24,11 +24,12 @@
 
     .layout-root-menuitem {
         > .layout-menuitem-root-text {
-            font-size: 0.857rem;
+            font-size: 15px;
             text-transform: uppercase;
-            font-weight: 700;
-            color: var(--text-color);
-            margin: 0.75rem 0;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            color: var(--text-color-secondary);
+            margin: 1rem 0 0.5rem 0;
         }
 
         > a {
@@ -66,25 +67,29 @@
             outline: 0 none;
             color: var(--text-color);
             cursor: pointer;
-            padding: 0.75rem 1rem;
+            padding: 0.625rem 0.875rem;
             border-radius: var(--content-border-radius);
             transition:
                 background-color var(--element-transition-duration),
                 box-shadow var(--element-transition-duration);
+            font-size: 15px;
+            font-weight: 400;
 
             .layout-menuitem-icon {
-                margin-right: 0.5rem;
+                margin-right: 0.625rem;
+                font-size: 1rem;
             }
 
             .layout-submenu-toggler {
-                font-size: 75%;
+                font-size: 15px;
                 margin-left: auto;
                 transition: transform var(--element-transition-duration);
             }
 
             &.active-route {
-                font-weight: 700;
+                font-weight: 500;
                 color: var(--primary-color);
+                background-color: var(--primary-color-text);
             }
 
             &:hover {

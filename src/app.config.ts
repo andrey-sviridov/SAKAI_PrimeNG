@@ -39,7 +39,7 @@ export const appConfig: ApplicationConfig = {
                     useFactory: () => new TranslateMessageFormatCompiler(),
                     deps: []
                 },
-                defaultLanguage: 'en'
+                defaultLanguage: 'ru'
             })
         ),
         MessageService

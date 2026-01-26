@@ -1,4 +1,4 @@
-import { Component, Renderer2, ViewChild } from '@angular/core';
+import { Component, Renderer2, ViewChild, OnDestroy } from '@angular/core';
 import { filter, Subscription } from 'rxjs';
 import { AppTopbar } from '@/layout/app-topbar';
 import { LayoutService } from '@/core/services/layout.service';
@@ -7,6 +7,9 @@ import { AppFooter } from '@/layout/app-footer';
 import { NgClass } from '@angular/common';
 import { AppSideBar } from '@/layout/app-side-bar/app-side-bar';
 import { LoadingService } from '@/core/services/loading.service';
+
+// Импорт анимации
+import { slideLeftRightAnimation } from './route-animations'; // Укажите правильный путь
 
 @Component({
     selector: 'app-app-layout',
@@ -19,15 +22,14 @@ import { LoadingService } from '@/core/services/loading.service';
     ],
     templateUrl: './app-layout.html',
     standalone: true,
-    styleUrl: './app-layout.scss'
+    styleUrl: './app-layout.scss',
+    animations: [slideLeftRightAnimation] // <--- Подключаем анимацию
 })
-export class AppLayout {
+export class AppLayout implements OnDestroy {
     overlayMenuOpenSubscription: Subscription;
-
     menuOutsideClickListener: any;
 
     @ViewChild(AppSideBar) appSidebar!: AppSideBar;
-
     @ViewChild(AppTopbar) appTopBar!: AppTopbar;
 
     constructor(
@@ -53,6 +55,16 @@ export class AppLayout {
         this.router.events.pipe(filter((event) => event instanceof NavigationEnd)).subscribe(() => {
             this.hideMenu();
         });
+    }
+
+    // Метод для определения состояния анимации
+    prepareRoute(outlet: RouterOutlet) {
+        const animationState = outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
+
+        // Удалите эту строку, когда заработает:
+        console.log('Animation State:', animationState);
+
+        return animationState;
     }
 
     isOutsideClicked(event: MouseEvent) {

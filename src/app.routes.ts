@@ -11,23 +11,23 @@ export const appRoutes: Routes = [
         path: '',
         component: AppLayout,
         children: [
-            { path: '', component: Dashboard },
-            { path: 'uikit', loadChildren: () => import('@/pages/uikit/uikit.routes') },
-            { path: 'documentation', component: Documentation },
-            { path: 'pages', loadChildren: () => import('@/pages/pages.routes') },
-            { path: 'test', loadChildren: () => import('@/pages/test-page/test-page.routes') },
+            { path: '', component: Dashboard, data: { animation: 'Dashboard' } },
+            { path: 'uikit', loadChildren: () => import('@/pages/uikit/uikit.routes'), data: { animation: 'Uikit' } },
+            { path: 'documentation', component: Documentation, data: { animation: 'Doc' } },
+            { path: 'pages', loadChildren: () => import('@/pages/pages.routes'), data: { animation: 'Pages' } },
+            { path: 'test', loadChildren: () => import('@/pages/test-page/test-page.routes'), data: { animation: 'Test' } },
         ]
     },
     {
         path: 'preview',
         component: PreviewLayout,
         children: [
-            { path: '', component: Dashboard },
-            { path: 'uikit', loadChildren: () => import('@/pages/uikit/uikit.routes') },
+            { path: '', component: Dashboard, data: { animation: 'PrDashboard' } },
+            { path: 'uikit', loadChildren: () => import('@/pages/uikit/uikit.routes'), data: { animation: 'PrUikit' } },
         ]
     },
-    { path: 'landing', component: Landing },
-    { path: 'notfound', component: Notfound },
-    { path: 'auth', loadChildren: () => import('@/pages/auth/auth.routes') },
-    { path: '**', redirectTo: '/notfound' }
+    { path: 'landing', component: Landing, data: { animation: 'Landing' } },
+    { path: 'notfound', component: Notfound, data: { animation: 'NotFound' } },
+    { path: 'auth', loadChildren: () => import('@/pages/auth/auth.routes'), data: { animation: 'Auth' } },
+    { path: '**', redirectTo: '/notfound', data: { animation: 'NotFoundTwo' } }
 ];
