@@ -26,22 +26,10 @@ interface ColumnTemplateContext {
 })
 export class AppDataTable implements AfterContentInit, OnDestroy {
     private destroy$ = new Subject<void>();
-    isDarkMode = false;
 
     constructor(
         @Inject(PLATFORM_ID) private platformId: Object
     ) {
-        // Подписываемся на изменения темы
-        this.detectTheme();
-
-        // Слушаем изменения темы
-        const themeLink = document.getElementById('theme-css') as HTMLLinkElement;
-        if (themeLink) {
-            const themeLinkObserver = new MutationObserver(() => {
-                this.detectTheme();
-            });
-            themeLinkObserver.observe(themeLink, { attributes: true });
-        }
     }
     @Input() data: any[] = [];
     @Input() columns: any[] = [];
@@ -67,13 +55,6 @@ export class AppDataTable implements AfterContentInit, OnDestroy {
     // Хелпер для получения шаблона
     getBodyTemplate(field: string): TemplateRef<any> | null {
         return this.bodyTemplatesMap[field] || null;
-    }
-
-    private detectTheme() {
-        if (isPlatformBrowser(this.platformId)) {
-            this.isDarkMode = document.body.classList.contains('dark-theme') ||
-                             document.documentElement.getAttribute('data-theme') === 'dark';
-        }
     }
 
     ngOnDestroy() {

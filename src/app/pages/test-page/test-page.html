@@ -6,9 +6,11 @@
             icon="pi pi-download"
             (click)="loadData()" />
     </div>
-
-    <app-data-table [data]="users" [columns]="cols">
-
+    
+    <app-data-table
+        [data]="users"
+        [columns]="cols"
+    >
         <ng-template columnName="organizationName" let-item>
             <div class="grid grid-column gap-1">
                     <span class="font-semibold">
@@ -33,42 +35,4 @@
         </ng-template>
 
     </app-data-table>
-
-<!--    <app-simple-table [data]="users" [columns]="cols">-->
-<!--        <div slot="top">-->
-<!--            <p-button [label]="'TEST_PAGE.CREATE_BUTTON' | translate" icon="pi pi-plus"></p-button>-->
-<!--            <p-button-->
-<!--                class="pl-3"-->
-<!--                [label]="'TEST_PAGE.REFRESH' | translate"-->
-<!--                icon="pi pi-refresh"-->
-<!--                (click)="loadData()"-->
-<!--            />-->
-<!--        </div>-->
-
-<!--        <ng-template appTableTemplate name="organizationName" let-row>-->
-<!--            <div class="flex flex-col">-->
-
-<!--            <span class="font-bold text-gray-600 pb-1">-->
-<!--                {{ row.organizationName }}-->
-<!--            </span>-->
-
-<!--                <small class="text-xs text-gray-500">-->
-<!--                    {{ row.ownerXin }}-->
-<!--                </small>-->
-
-<!--            </div>-->
-<!--        </ng-template>-->
-
-<!--        <ng-template appTableTemplate name="sex" let-row>-->
-<!--            {{ row.sex ? ('TEST_PAGE.MALE' | translate) : ('TEST_PAGE.FEMALE' | translate) }}-->
-<!--        </ng-template>-->
-
-<!--        <ng-template appTableTemplate name="birthDate" let-row>-->
-<!--            {{ row.birthDate | date: 'dd.MM.yyyy' }}-->
-<!--        </ng-template>-->
-
-<!--        <div slot="bottom" class="text-right">-->
-<!--            {{ 'TEST_PAGE.TOTAL_RECORDS' | translate:{count: users.length} }}-->
-<!--        </div>-->
-<!--    </app-simple-table>-->
 </div>
