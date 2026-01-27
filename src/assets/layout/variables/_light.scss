@@ -1,8 +1,15 @@
 :root {
     --surface-ground: var(--p-surface-100);
+    --surface-card: var(--p-surface-0);
+    --sidebar-bg: var(--p-surface-0);
     --code-background: var(--p-surface-900);
     --code-color: var(--p-surface-200);
     --text-color: #3a3358;
     --text-color-secondary: #6b6680;
     --primary-color-text: rgba(99, 102, 241, 0.08);
+}
+::ng-deep{
+    .p-select {
+        background: var(--p-surface-100) !important;
+    }
 }

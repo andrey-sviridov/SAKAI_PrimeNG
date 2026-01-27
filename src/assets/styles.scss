@@ -22,6 +22,96 @@ body {
     }
 }
 
+/* Global dark theme text colors for all PrimeNG components */
+.app-dark .p-component {
+    color: var(--text-color) !important;
+}
+
+.app-dark .p-component .p-component {
+    color: var(--text-color) !important;
+}
+
+.app-dark .p-inputtext {
+    color: var(--text-color) !important;
+}
+
+.app-dark .p-label {
+    color: var(--text-color-secondary) !important;
+}
+
+.app-dark .p-button-label {
+    color: var(--text-color) !important;
+}
+
+.app-dark .p-menuitem-text {
+    color: var(--text-color) !important;
+}
+
+.app-dark .p-menuitem-icon {
+    color: var(--text-color) !important;
+}
+
+/* Button styles - consistent across themes */
+.p-button .p-button-label,
+.p-button .p-button-icon {
+    color: #ffffff !important;
+}
+
+.p-button:not(.p-button-outlined):not(.p-button-text) {
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+}
+
+.p-button:not(.p-button-outlined):not(.p-button-text):hover {
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+    opacity: 0.9 !important;
+}
+
+.p-button.p-button-outlined .p-button-label,
+.p-button.p-button-outlined .p-button-icon {
+    color: var(--primary-color) !important;
+}
+
+.p-button.p-button-text .p-button-label,
+.p-button.p-button-text .p-button-icon {
+    color: var(--primary-color) !important;
+}
+
+/* Dark theme styles for PrimeNG components */
+.app-dark .p-select {
+    background: var(--p-surface-800) !important;
+}
+
+.app-dark .p-select .p-select-label {
+    background: var(--p-surface-800) !important;
+}
+
+.app-dark .p-select .p-select-dropdown {
+    background: var(--p-surface-800) !important;
+}
+
+/* Dark theme styles for data table */
+.app-dark .p-datatable .p-datatable-tbody > tr > td {
+    color: var(--text-color) !important;
+}
+
+.app-dark .p-datatable .p-datatable-thead > tr > th {
+    color: var(--text-color) !important;
+}
+
+.app-dark .p-datatable .p-paginator {
+    color: var(--text-color) !important;
+}
+
+.app-dark .p-datatable .p-paginator .p-paginator-pages .p-paginator-page {
+    color: var(--text-color) !important;
+}
+
+.app-dark .p-datatable .p-paginator .p-paginator-pages .p-paginator-page.p-paginator-page-selected {
+    color: var(--primary-color) !important;
+}
+
 /* Фикс для заголовков, чтобы они не были слишком жирными */
 h1, h2, h3, h4, h5, h6 {
     font-weight: 500; /* В Material Design заголовки обычно medium, а не bold */

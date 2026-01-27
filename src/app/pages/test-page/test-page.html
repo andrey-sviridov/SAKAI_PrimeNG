@@ -1,16 +1,25 @@
-<div class="card shadow-md rounded-xl dark:bg-zinc-900">
+<div class="card shadow-md">
     <div class="flex items-center justify-between mb-6">
-        <h2 class="text-2xl font-bold text-zinc-800 dark:text-zinc-100">{{ 'TEST_PAGE.TITLE' | translate }}</h2>
+        <h2 class="text-2xl font-bold">{{ 'TEST_PAGE.TITLE' | translate }}</h2>
         <p-button
             [label]="'TEST_PAGE.LOAD_BUTTON' | translate"
             icon="pi pi-download"
             (click)="loadData()" />
     </div>
-    
+
     <app-data-table
         [data]="users"
         [columns]="cols"
+        [totalRecords]="users.length"
     >
+        <div actions class="pb-3">
+            <p-button>ADD</p-button>
+            <span>hello</span>
+        </div>
+        <div footer>
+            <span>Yo</span>
+        </div>
+
         <ng-template columnName="organizationName" let-item>
             <div class="grid grid-column gap-1">
                     <span class="font-semibold">
